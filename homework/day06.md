@@ -1,4 +1,4 @@
-# Homework00
+## Homework00
 
 ```java
 package com.day06.homework;
@@ -30,7 +30,7 @@ public class Homework00 {
 	}
 }
 ```
-#Homework01
+## Homework01
 ```java
 package com.day06.homework;
 
