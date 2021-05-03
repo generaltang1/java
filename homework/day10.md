@@ -65,3 +65,108 @@ public class QuizExtra02 {
 
 }
 ```
+2차원 배열
+```java
+
+package com.day10.quiz;
+
+import java.util.Arrays;
+
+public class Quiz02 {
+
+	public static void main(String[] args) {
+
+		/*
+		 문제2.
+		1 ~ 16 을 4 X 4 배열에 담고 
+			
+		(2-1)
+		1	2	3	4
+		5	6	7	8
+		9	10	11	12
+		13	14	15	16
+
+		(2-2) // 행의 순서대로 
+		1	5	9	13
+		2	6	10	14
+		3	7	11	15
+		4	8	12	16
+
+		(2-3)
+		if문 사용
+		
+		1	2	3	4 <- 직진
+		8	7	6	5 <- 후진
+		9	10	11	12 <- 직진
+		16	15	14	13 <- 후진
+
+		 */
+		//2-1 
+		
+		int[][] arr1 = new int[4][4];
+		int a = 0;
+		for(int 행 = 0; 행 < arr1.length; ++행) {
+			for(int 열 = 0; 열 < arr1[행].length; ++열) {
+				++a;
+				arr1[행][열] = a;
+				System.out.print(arr1[행][열] + "\t");
+			}
+			System.out.println();
+		}
+	
+		System.out.println("2-2번");
+
+		//2-2
+		int[][] arr2 = new int[4][4];
+		int b = 0;
+		for(int 열 = 0; 열 < arr1.length; ++열) {
+			for(int 행 = 0; 행 < arr1[열].length; ++행) {
+				++b;
+				arr1[열][행] = b;
+				System.out.print(arr1[행][열] + "\t");
+			}
+			System.out.println();
+		}
+	
+		
+		
+		//2-3
+		
+		System.out.println("2-3번");
+		int[][] arr3 = new int[4][4];
+		int c  = 0;
+		int 행 = 0, 열 = 0;
+		
+		for(행 = 0; 행 < arr3.length; ++행) {
+			for(열 = 0; 열 < arr3[행].length; ++열) {
+				++c;
+				arr3[행][열] = c;
+			} //행렬 생성
+			
+			//짝수번째 행 정배열 
+			if(행%2==0) {
+				for(열=0; 열 < arr3[행].length; ++열) {
+					System.out.print(arr3[행][열] + "\t");
+				}
+				System.out.println();
+			}
+			//홀수번째 행 역순배열 
+			if(행%2==1) {
+				for(열=arr3[행].length-1; 열 >=0; --열) {
+					System.out.print(arr3[행][열] + "\t");
+				}
+				System.out.println();
+			}
+		
+		}
+		
+		
+		
+	}//main
+
+}
+
+
+
+```
+
