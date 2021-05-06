@@ -15,7 +15,7 @@ public class MyMethod {
 	 */
 	
 	double get_average(int kr,int en,int ma){
-		return (kr+ en +ma)/3;
+		return (kr+ en +ma)/3.0;
 	}
 	
 	/*
@@ -64,19 +64,19 @@ public class MyMethod {
 		switch(c){
 		case "+" :
 			result =  num1 + num2;
-			break;
+			
 		
 		case "-" : 
 			result = num1 - num2;
-			break;
+			
 		
 		case "*" : 
 			result = num1 * num2;
-			break;
+			
 		
 		case "/" : 
 			result = (double)num1 / (double)num2;
-			break;
+			
 		
 	    default :
 	    	result = 0;
