@@ -76,7 +76,7 @@ public class MyMath {
 		return sum;
 	}
 	String getGugudan(int n2) {
-			String dan = null;
+			String dan = "";
 		for (int i = 1; i <= 9; i++) {
 	           dan = dan + (n2 + "X" + i + "=" + (n2*i)) +'\n';
 	        }
