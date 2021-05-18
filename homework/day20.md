@@ -32,47 +32,6 @@ import java.util.Scanner;
 public class Homework01 {
 	public static void main(String[] args) {
 		
-		Transportation Bus = new Transportation() {
-			@Override
-			public int getCharge(int age, int km) {
-				int price = age >= 20 ? DEFAULT_ADULT_CHARGE : DEFAULT_KID_CHARGE;
-				price += km / 10 * 100;
-				if(age < 20) {
-					price *= 0.8;
-				}
-				return price;
-			}
-		}; 
-		
-		Transportation Taxi = new Transportation() {
-			@Override
-			public int getCharge(int age, int km) {
-				return 4000 + (km-10) * 100;
-			}
-		};
-		
-		Transportation Subway = new Transportation() {
-			@Override
-			public int getCharge(int age, int km) {
-				int price = age >= 20 ? DEFAULT_ADULT_CHARGE : DEFAULT_KID_CHARGE;
-				price += (km / 10) * (age >= 20 ? 100 : 50);
-				return price;
-			}
-		};
-		
-		Transportation Train = new Transportation() {
-
-			@Override
-			public int getCharge(int age, int km) {
-				int price = 15000;
-				price += (km / 30) * 1000;
-				if (age < 20) {
-					price *= 0.5;
-				}
-				return price;
-			}
-			
-		};
 		
 		Scanner sc = new Scanner(System.in);
 		int km, age, tr;
@@ -89,15 +48,57 @@ public class Homework01 {
 		
 		switch (tr) {
 		case 0:
+			Transportation Bus = new Transportation() {
+				@Override
+				public int getCharge(int age, int km) {
+					int price = age >= 20 ? DEFAULT_ADULT_CHARGE : DEFAULT_KID_CHARGE;
+					price += km / 10 * 100;
+					if(age < 20) {
+						price *= 0.8;
+					}
+					return price;
+				}
+			};
+			
 			transportation = Bus;
 			break;
 		case 1:
+			Transportation Taxi = new Transportation() {
+				@Override
+				public int getCharge(int age, int km) {
+					return 4000 + (km-10) * 100;
+				}
+			};
+			
 			transportation = Taxi;
 			break;
 		case 2:
+			Transportation Subway = new Transportation() {
+				@Override
+				public int getCharge(int age, int km) {
+					int price = age >= 20 ? DEFAULT_ADULT_CHARGE : DEFAULT_KID_CHARGE;
+					price += (km / 10) * (age >= 20 ? 100 : 50);
+					return price;
+				}
+			};
+			
 			transportation = Subway;
 			break;
 		case 3:
+			Transportation Train = new Transportation() {
+
+				@Override
+				public int getCharge(int age, int km) {
+					int price = 15000;
+					price += (km / 30) * 1000;
+					if (age < 20) {
+						price *= 0.5;
+					}
+					return price;
+				}
+				
+			};
+			
 			transportation = Train;
 			break;
 		default:
@@ -113,5 +114,4 @@ public class Homework01 {
 		}
 	}//main
 }
-
 ```
