@@ -3,7 +3,50 @@ Nation 클래스 추가
  		- 생성자 : 마음대로 여러개
  		- getter, setter : 없어도 됨
  		- toString() 오버 라이드
- 		
+ 
+ ```java
+ package com.day23.homework;
+
+public class Nation {
+   private String nation;
+   private String capital;
+   private int population;
+   
+   public Nation(String nation, String capital, int population) {
+      super();
+      this.nation = nation;
+      this.capital = capital;
+      this.population = population;
+   }
+   
+   @Override
+   public String toString() {
+      return "Nation [nation=" + nation + ", capital=" + capital + ", population=" + population + "]";
+   }
+
+   public String getNation() {
+      return nation;
+   }
+   public void setNation(String nation) {
+      this.nation = nation;
+   }
+   public String getCapital() {
+      return capital;
+   }
+   public void setCapital(String capital) {
+      this.capital = capital;
+   }
+   public int getPopulation() {
+      return population;
+   }
+   public void setPopulation(int population) {
+      this.population = population;
+   }
+   
+}
+ ```
+ 
+ 메인 클래스 
  		메인
  		- 메뉴
  			1. 국가 추가
@@ -13,7 +56,7 @@ Nation 클래스 추가
  			0. 종료 
       
  ```java
-      package com.day23.quiz;
+   package com.day23.homework;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,97 +64,55 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 
+public class Homework01 {
+   public static void main(String[] args) {
+      String menu = "1. 국가 추가 \r\n" + "2. 모든 국가 보기 \r\n" + "3. 번호로 검색\r\n" + "4. 이름으로 검색\r\n" + "0. 종료";
+      String select;
+      List<Nation> list = new ArrayList<>();
+      loop: while (true) {
+         select = JOptionPane.showInputDialog(menu);
+         switch (select) {
+         case "0":
+            JOptionPane.showMessageDialog(null, "프로그램 종료");
+            break loop;
+         case "1":
+            list.add(new Nation(JOptionPane.showInputDialog("국가명"), JOptionPane.showInputDialog("수도명"),
+                  Integer.parseInt(JOptionPane.showInputDialog("인구수"))));
+            JOptionPane.showMessageDialog(null, "등록 완료!");
+            break;
+         case "2":
+            StringBuilder sb = new StringBuilder("--- 국가 목록 ---\n");
+            for (Nation e : list) {
+               sb.append(e).append("\n"); // e.toString()
+            }
+            JOptionPane.showMessageDialog(null, sb.toString());
+            break;
+         case "3":
+            int idx = Integer.parseInt(JOptionPane.showInputDialog("번호(0~" + (list.size() - 1) + ")"));
+            if (idx < 0 || idx > list.size()) {
+               JOptionPane.showMessageDialog(null, "잘못된 번호입니다.");
+            } else {
+               JOptionPane.showMessageDialog(null, list.get(idx));
+            }
+            break;
+         case "4":
+            String name = JOptionPane.showInputDialog("찾으실 국가명");
+            Nation resultNation = null;
+            for (Nation e : list) {
+               if (e.getNation().equalsIgnoreCase(name)) {
+                  resultNation = e;
+                  break;
+               }
+            }
+            JOptionPane.showMessageDialog(null, resultNation == null ? "미등록 국가" : resultNation);
+            break;
 
- 
-class Nation{
-	String nation;
-	String capital;
-	int population;
-	@Override
-	public String toString() {
-		return "국가 : " + nation + "/ 수도 : " + capital + "/ 인구 : " + population;
-	}
-	Nation(String nation, String capital, int population){
-		this.nation = nation;
-		this.capital = capital;
-		this.population = population;
-		
-	}
-	
-}
-public class Quiz01 {
-	
-	public static void main(String[] args) {
-		String select;
-		String message = null;
-		
-		List<Nation> list1 = new ArrayList<>();
-		String menu = "1. 국가추가\r\n"
-				+ "2. 모든 국가보기\r\n"
-				+ "3. 번호로 검색\r\n"
-				+ "4. 이름으로 검색\r\n"
-				+ "0. 종료 ";
-		
-		
-		menu: while(true) {
-			
-			
-			select = JOptionPane.showInputDialog(menu);
-			switch(select) {
-			
-			case "1" : 
-				String nation = JOptionPane.showInputDialog("국가 : ");
-				String capital = JOptionPane.showInputDialog("수도 : ");
-				int population = Integer.parseInt(JOptionPane.showInputDialog("인구 : "));
-				list1.add(new Nation(nation, capital, population));
-				break;
-				
-			case "2" : 
-				if(list1 == null) {
-					message += "등록된 국가가 없습니다.";
-					JOptionPane.showMessageDialog(null, message);
-					break;
-				}
-				else {
-				JOptionPane.showMessageDialog(null, list1);
-				break;
-				}
-				
-				
-			case "3" :
-				int num = Integer.parseInt(JOptionPane.showInputDialog("국가 번호"));
-				Object o = list1.get(num);
-				if(o==null) {
-					message += "해당 번호의 국가가 존재하지 않습니다. ";
-					JOptionPane.showMessageDialog(null, message);
-					break;
-				}
-				else {JOptionPane.showMessageDialog(null,"국가 번호 : \t"+ num+"\t"+  o);
-						break;
-				}
-			
-			case "4" : 
-				Object nn = JOptionPane.showInputDialog("검색할 국가명을 입력하세요");
-				
-				if(list1.contains(nn)==false) {
-					System.out.println("존재하지 않은 국가명입니다.");
-					break;
-				}
-				else {
-					JOptionPane.showInputDialog(nn);
-				}
-				
-			case"5" :
-				JOptionPane.showMessageDialog(null, "프로그램 종료");
-				break menu;
-			
-				
-				
-			}
-		}
-	}
-
-}
+         default:
+            JOptionPane.showMessageDialog(null, "다시 선택하세요.");
+            break;
+         }
+      }
+   }
 ```
       
       
